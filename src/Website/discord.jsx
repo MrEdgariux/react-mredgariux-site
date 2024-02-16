@@ -59,7 +59,7 @@ const JoinButton = styled.button`
 const DiscordList = () => {
     const servers = [
         { name: 'Žaidimų Discord Serveris', id: '8KwWW645ck' },
-        { name: 'MrEdgariux', id: 'server2' },
+        { name: 'MrEdgariux', id: 'QTgd4JkHDS' },
         { name: '<Emptyness in here>', id: 'not-found', canJoin: false },
         // Add more servers as needed
     ];
@@ -80,7 +80,7 @@ const DiscordList = () => {
     }
 
     return (
-        <Container background="/files/images/main.jpg">
+        <Container background="/files/images/discord.jpg">
             <GlassCard>
                 <Title>MrEdgariux - Discord</Title>
                 <Subtitle>Čia galite rasti visus mūsų Discord serverius, kuriuos mes turime!</Subtitle>

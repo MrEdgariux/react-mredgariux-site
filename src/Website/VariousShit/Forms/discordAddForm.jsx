@@ -6,6 +6,7 @@ import {toast} from "react-toastify";
 
 const FormsDiscordAddServer = () => {
     // State to manage form input
+    const [response, setResponse] = useState(null);
     const [formData, setFormData] = useState({
         username: '',
         discord_invite_link: '',
@@ -22,21 +23,47 @@ const FormsDiscordAddServer = () => {
     };
 
     // Function to handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (formData === undefined) {
             toast.error("Nesekmingai baigta operacija.", {theme: "dark"});
             return;
         }
-        toast.success(`Jūs sekmingai pridavėte savo "${formData.discord_name}" serverį`)
+        if (!formData.discord_invite_link.startsWith("https://discord.gg/")) {
+            toast.warn("Jūsų nurodyta nuoroda neleidžiama!", {theme: "dark"});
+            return;
+        }
+
+
+        try {
+            // WARNING ! IF YOU'RE GOING TO ABUSE THIS API, YOU MIGHT GET IN TROUBLE BECAUSE THIS API USES IP ADDRESS RETRIEVAL
+            const response = await fetch('https://cdn.mredgariux.site/mredgariux_site/files/api/add_discord_server.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(formData).toString(),
+            });
+
+            const data = await response.json();
+            if (data.status === "success") {
+                toast.success(`Jūs sekmingai pridavėte savo "${formData.discord_name}" serverį`, {theme: "dark"})
+            } else {
+                toast.error("Ups! Kažkas nutiko, todėl negalėjome išsiųsti serverio!", {theme:"dark"});
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            toast.error("Nepavyko išsiųsti tavo serverio, pranešk tai mums!", {theme:"dark"});
+            return
+        }
         // Add logic to handle form submission (e.g., sending data to a server)
         console.log(formData);
     };
     return (
-        <Container background="/files/images/main.jpg">
+        <Container background="/files/images/ratchet6.jpg">
             <GlassCard>
                 <Title>Discord - Pridėti serverį</Title>
-                <Subtitle>Jūs žadate užpildyti prašymą pridėti jūsų discord serverį į sąrašą!</Subtitle>
+                <Subtitle>Jūs prašote pridėti savo Discord serverį į sąrašą.</Subtitle>
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
                         Vartotojo vardas:

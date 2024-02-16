@@ -6,7 +6,7 @@ const E404 = () => {
         toast.error("Operacija nepavyko", {theme: "dark"})
     }
     return (
-        <Container background="/files/images/notfound.png">
+        <Container background="/files/images/ratchet.png">
             <GlassCard>
                 <Title>Puslapis nerastas</Title>
                 <Subtitle>Dėja, šis puslapis nebuvo rastas.</Subtitle>
