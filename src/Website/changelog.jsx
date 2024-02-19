@@ -40,6 +40,8 @@ const changelogData = [
     { version: "1.2", changes: ["Apsaugų implementacija", "Backgroundų pakeitimai", "Meniu pagerinimas", "Patvirtinimo puslapis"], change_date: "2024-02-15" },
     { version: "1.3", changes: ["Discord serverių sąrašas", "Dizaino perdarymas", "Menu tvarkymai", "Failų perkėlimas"], change_date: "2024-02-15" },
     { version: "1.4", changes: ["Pridėti discord serverį", "Formos", "Iššokantys langeliai", "Perėjimai"], change_date: "2024-02-16" },
+    { version: "1.5", changes: ["Krovimosi langas", "Klaidų sutvarkymai"], change_date: "2024-02-17" },
+    { version: "1.6", changes: ["Backend perdarymas", "Discord pridėjimo perdarymas"], change_date: "2024-02-18" },
     // Add more versions and changes as needed
 ];
 
@@ -62,7 +64,7 @@ const Changelogs = () => {
             <GlassCard>
                 <Title>MrEdgariux - Pakeitimai</Title>
                 <Subtitle>Štai mūsų visos svetainės pakeitimų sąrašas</Subtitle>
-                <Subtitle>Dabartinė svetainės versija: <Versionas>1.4</Versionas></Subtitle>
+                <Subtitle>Dabartinė svetainės versija: <Versionas>1.5</Versionas></Subtitle>
                 <ChangelogList>
                     {changelogData.map(({ version, changes, change_date }) => (
                         <ChangelogItem key={version} onClick={() => openModal({ version, changes, change_date })}>

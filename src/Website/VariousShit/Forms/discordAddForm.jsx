@@ -6,9 +6,8 @@ import {toast} from "react-toastify";
 
 const FormsDiscordAddServer = () => {
     // State to manage form input
-    const [response, setResponse] = useState(null);
     const [formData, setFormData] = useState({
-        username: '',
+        vartotojo_vardas: '',
         discord_invite_link: '',
         discord_name: ''
     });
@@ -37,7 +36,7 @@ const FormsDiscordAddServer = () => {
 
         try {
             // WARNING ! IF YOU'RE GOING TO ABUSE THIS API, YOU MIGHT GET IN TROUBLE BECAUSE THIS API USES IP ADDRESS RETRIEVAL
-            const response = await fetch('https://cdn.mredgariux.site/mredgariux_site/files/api/add_discord_server.php', {
+            const response = await fetch('https://cdn.mredgariux.site/discord/add-server', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -46,7 +45,7 @@ const FormsDiscordAddServer = () => {
             });
 
             const data = await response.json();
-            if (data.status === "success") {
+            if (data.status === true) {
                 toast.success(`Jūs sekmingai pridavėte savo "${formData.discord_name}" serverį`, {theme: "dark"})
             } else {
                 toast.error("Ups! Kažkas nutiko, todėl negalėjome išsiųsti serverio!", {theme:"dark"});
@@ -67,7 +66,7 @@ const FormsDiscordAddServer = () => {
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
                         Vartotojo vardas:
-                        <Input type="text" name="username" value={formData.username} onChange={handleInputChange} required={true}/>
+                        <Input type="text" name="vartotojo_vardas" value={formData.vartotojo_vardas} onChange={handleInputChange} required={true}/>
                     </FormGroup>
                     <FormGroup>
                         Discord Priėmimo nuoroda:
