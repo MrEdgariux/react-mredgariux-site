@@ -12,7 +12,9 @@ import DiscordList from './Website/discord';
 import Easter1 from './Website/EasterEggs/e2024';
 import FormsDiscordAddServer from './Website/VariousShit/Forms/discordAddForm';
 import { ProgressBaras } from './Styles/ProgressBar';
-import InternetStatusChecker from "./Website/network";
+import InternetStatusChecker from "./Handlers/network";
+import PokemonXHome from "./Website/PokemonX/Main";
+import PokemonXLogin from "./Website/PokemonX/Login";
 
 const Menu = styled.nav`
     width: 100%;
@@ -59,11 +61,13 @@ const MenuItem = styled(Link)`
 const AppContent = () => {
     const location = useLocation();
     const isMainPage = location.pathname === '/';
+    const isPokemonXPage = window.location.pathname.includes('/PokemonX');
+    const debugMode = true;
 
     // Init network onlinility checks
     InternetStatusChecker();
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(!debugMode);
     const [progress, setProgress] = useState(0);
     const [hidePBar, setHidePBar] = useState(false);
     const [textDisplay, setTextDisplay] = useState("Kraunama...");
@@ -114,11 +118,18 @@ const AppContent = () => {
             ) : (
                 <>
                     <ToastContainer />
-                    {!isMainPage && (
+                    {!isMainPage && !isPokemonXPage && (
                         <Menu>
                             <MenuItem to="/home">Namai</MenuItem>
                             <MenuItem to="/changes">Pakeitimai</MenuItem>
                             <MenuItem to="/discord">Discord serveriai</MenuItem>
+                        </Menu>
+                    )}
+                    {isPokemonXPage && (
+                        <Menu>
+                            <MenuItem to="/PokemonX">PokemonX</MenuItem>
+                            <MenuItem to="/PokemonX/login">Prisijungti</MenuItem>
+                            <MenuItem to="/PokemonX/register">Prisiregistruoti</MenuItem>
                         </Menu>
                     )}
                     <Routes>
@@ -128,6 +139,9 @@ const AppContent = () => {
                         <Route path="/discord" element={<DiscordList />} />
                         <Route path="/easter-egg/2024" element={<Easter1 />} />
                         <Route path="/forms/discord/add" element={<FormsDiscordAddServer />} />
+
+                        <Route path="/PokemonX" element={<PokemonXHome />} />
+                        <Route path="/PokemonX/login" element={<PokemonXLogin />} />
                         <Route path="*" element={<E404 />} />
                     </Routes>
                 </>
