@@ -20,7 +20,7 @@ const ChangelogItem = styled.li`
 `;
 
 const Versionas = styled.span`
-    color: lime;
+    color: orange;
     font-family: monospace;
 `;
 
@@ -42,6 +42,8 @@ const changelogData = [
     { version: "1.4", changes: ["Pridėti discord serverį", "Formos", "Iššokantys langeliai", "Perėjimai"], change_date: "2024-02-16" },
     { version: "1.5", changes: ["Krovimosi langas", "Klaidų sutvarkymai"], change_date: "2024-02-17" },
     { version: "1.6", changes: ["Backend perdarymas", "Discord pridėjimo perdarymas"], change_date: "2024-02-18" },
+    { version: "1.7", changes: ["Fono perdarymas", "Ištrinta galimybė pridėti discord serverį", "Atnaujinti dependencies"], change_date: "2024-11-03" },
+    { version: "1.8", changes: ["Meniu perdarymas", "Įdėtas informacijos puslapis", "Įdėtas projektai puslapis", "Įdėtas partneriai puslapis"], change_date: "2024-11-04" },
     // Add more versions and changes as needed
 ];
 
@@ -60,11 +62,11 @@ const Changelogs = () => {
     };
 
     return (
-        <Container background="/files/images/changelog.jpg">
+        <Container>
             <GlassCard>
                 <Title>MrEdgariux - Pakeitimai</Title>
                 <Subtitle>Štai mūsų visos svetainės pakeitimų sąrašas</Subtitle>
-                <Subtitle>Dabartinė svetainės versija: <Versionas>1.5</Versionas></Subtitle>
+                <Subtitle>Dabartinė svetainės versija: <Versionas>1.8 (BETA)</Versionas></Subtitle>
                 <ChangelogList>
                     {changelogData.map(({ version, changes, change_date }) => (
                         <ChangelogItem key={version} onClick={() => openModal({ version, changes, change_date })}>

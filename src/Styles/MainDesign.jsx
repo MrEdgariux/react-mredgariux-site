@@ -1,23 +1,25 @@
 import styled from "styled-components";
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const StyledContainer = styled.div`
     background: url(${(props) => props.background}) center/cover no-repeat;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Adjust to row to allow sidebar and content next to each other */
     align-items: center;
     justify-content: center;
     user-select: none;
+    position: relative;
+    overflow: hidden;
 `;
 
-const Container = ({ background, children }) => {
-    return <StyledContainer background={background}>{children}</StyledContainer>;
+const Container = ({ children }) => {
+  return <StyledContainer background="files/images/background.webp">{children}</StyledContainer>;
 };
 
 Container.propTypes = {
-    background: PropTypes.string,
-    children: PropTypes.node,
+  children: PropTypes.node,
 };
 
 const GlassCard = styled.div`
@@ -26,6 +28,23 @@ const GlassCard = styled.div`
     border-radius: 12px;
     backdrop-filter: blur(10px); /* Apply blur for glass effect */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 600px;
+    width: 80%;
+    position: relative;
+
+    @media (max-width: 768px) {
+        max-width: 70%;
+    }
+`;
+
+const ErrorGlassCard = styled.div`
+    background: rgba(25,25,25, 0.4); /* Transparent white color for the card */
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid darkred;
+    backdrop-filter: blur(10px); /* Apply blur for glass effect */
+    box-shadow: 0 0px 10px red;
     text-align: center;
     max-width: 600px;
     width: 80%;
@@ -69,4 +88,4 @@ const Button = styled.button`
     }
 `;
 
-export { StyledContainer, Container, GlassCard, Title, Subtitle, Button };
+export { StyledContainer, Container, GlassCard, ErrorGlassCard, Title, Subtitle, Button };

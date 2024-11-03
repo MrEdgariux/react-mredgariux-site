@@ -53,4 +53,55 @@ const Textarea = styled.textarea`
     }
 `;
 
-export {Form, Textarea, FormGroup, Input};
+const DiscordTable = styled.table`
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+`;
+
+const TableHeader = styled.th`
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #3498db;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 8px;
+`;
+
+const TableData = styled.td`
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    text-align: center;
+`;
+
+const JoinButton = styled.button`
+    color: #fff;
+    background: rgba(60, 60, 60, 0.4);
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+        background-color: #3498db;
+        border-color: #2980b9;
+        color: #fff;
+    }
+
+    ${(props) => props.disabled && `
+        background-color: #7f8c8d;
+        cursor: not-allowed;
+        &:hover {
+            background-color: #7f8c8d;
+        }
+    `}
+`;
+
+export {Form, Textarea, FormGroup, Input, DiscordTable, TableHeader, TableData, JoinButton};

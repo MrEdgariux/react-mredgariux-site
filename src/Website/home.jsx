@@ -7,7 +7,7 @@ const RealHome = () => {
         <Container background="/files/images/main.jpg">
             <GlassCard>
                 <Title>MrEdgariux svetainė</Title>
-                <Subtitle>Sveikas atvykęs į atnaujinta svetainę! :O</Subtitle>
+                <Subtitle>Pagaliau pradedame atnaujinima</Subtitle>
             </GlassCard>
         </Container>
     );

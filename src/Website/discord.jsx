@@ -1,67 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import {toast} from "react-toastify";
-import {Container, GlassCard, Subtitle, Title, Button} from "../Styles/MainDesign";
-import {useNavigate} from "react-router-dom";
-
-
-const DiscordTable = styled.table`
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-`;
-
-const TableHeader = styled.th`
-    padding: 10px;
-    font-size: 1.2rem;
-    background-color: #3498db;
-    color: #fff;
-    border: 2px solid #fff;
-    border-radius: 8px;
-`;
-
-const TableData = styled.td`
-    padding: 10px;
-    font-size: 1rem;
-    color: #fff;
-    border: 2px solid #fff;
-    border-radius: 8px;
-    text-align: center;
-`;
-
-const JoinButton = styled.button`
-    color: #fff;
-    background: rgba(60, 60, 60, 0.4);
-    backdrop-filter: blur(10px);
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: 2px solid #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-
-    &:hover {
-        background-color: #3498db;
-        border-color: #2980b9;
-        color: #fff;
-    }
-
-    ${(props) => props.disabled && `
-        background-color: #7f8c8d;
-        cursor: not-allowed;
-        &:hover {
-            background-color: #7f8c8d;
-        }
-    `}
-`;
+import {Container, GlassCard, Subtitle, Title} from "../Styles/MainDesign";
+import {TableData, DiscordTable, TableHeader, JoinButton} from "../Styles/Form";
 
 const DiscordList = () => {
     const servers = [
         { name: 'Žaidimų Discord Serveris', id: '8KwWW645ck' },
         { name: 'MrEdgariux', id: 'QTgd4JkHDS' },
-        { name: '<Emptyness in here>', id: 'not-found', canJoin: false },
-        // Add more servers as needed
     ];
 
     const handleJoin = (serverId, canJoin) => {
@@ -74,10 +19,6 @@ const DiscordList = () => {
             alert(`Cannot join Discord server: ${serverId}`);
         }
     };
-    const navigator = useNavigate();
-    const handleAdd = () => {
-        navigator("/forms/discord/add");
-    }
 
     return (
         <Container background="/files/images/discord.jpg">
@@ -107,8 +48,6 @@ const DiscordList = () => {
                     ))}
                     </tbody>
                 </DiscordTable>
-                <Subtitle>Nori patekti į šį sąrašą?</Subtitle>
-                <Button onClick={handleAdd}>Noriu!</Button>
             </GlassCard>
         </Container>
     );

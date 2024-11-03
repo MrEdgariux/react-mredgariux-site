@@ -18,7 +18,7 @@ const Home = () => {
     };
 
     return (
-        <Container background="/files/images/verify.png">
+        <Container>
             <GlassCard>
                 <Title>MrEdgariux Apsaugos</Title>
                 <Subtitle>Sveikas atvykęs!</Subtitle>
